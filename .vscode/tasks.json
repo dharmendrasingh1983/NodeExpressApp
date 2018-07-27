@@ -1,0 +1,15 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Chrome",           
+            "command": "google-chrome", 
+            "linux": {
+                "command": "google-chrome"
+            },          
+            "args": [
+                "http://localhost:3000"
+            ]
+        }
+    ]
+}
