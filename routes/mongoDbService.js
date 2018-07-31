@@ -65,7 +65,6 @@ module.exports = {
 
 }
 
-function processMongod(tableName, processName);
 
 function processMongod(tableName, processName, data) {
     return new Promise(resolved => {
