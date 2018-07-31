@@ -89,13 +89,17 @@ function processMongod(tableName, processName, data) {
                             $set: {
                                 "EmployeeName": data.EmployeeName
                             }
+                        }, function (error) {
+                            resolved(true);
                         });
-                        resolved(true);
+
                     } else if (processName === processEnum.delete && data !== undefined) {
                         db.collection('Employee').deleteOne({
-                            "EmployeeName": data.Employeeid
+                            "Employeeid": data.Employeeid
+                        }, function (error) {
+                            resolved(true);
                         });
-                        resolved(true);
+
                     }
 
                 } catch (e) {

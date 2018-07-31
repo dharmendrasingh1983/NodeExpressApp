@@ -11,7 +11,13 @@ router.get('/', async function (req, res, next) {
   //let isDbConnected=await db.connect();
   // let isDbInsert=db.insert();
   //let select =  await db.select();
-  mongod.insert();
+  await db.delete({
+    Employeeid: 4,
+    EmployeeName: "Dharmendra"
+  });
+
+  //await mongod.insert();
+  //await mongod.select();
 
   // console.log(res);  
   res.render('index', {
