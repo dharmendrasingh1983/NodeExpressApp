@@ -3,7 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-
+var log4js = require('log4js');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
@@ -22,6 +22,22 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
+var dateTime = require('node-datetime');
+var dt = dateTime.create();
+var formatted = dt.format('Y-m-d');
+
+/* const logger = log4js.getLogger('cheese');
+logger.trace('Entering cheese testing');
+logger.debug('Got cheese.');
+logger.info('Cheese is Gouda.');
+logger.warn('Cheese is quite smelly.');
+logger.error('Cheese is too ripe!');
+logger.fatal('Cheese was breeding ground for listeria.'); */
+
+log4js.configure({
+  appenders: { cheese: { type: 'file', filename: `./logs/${formatted}.log` } },
+  categories: { default: { appenders: ['cheese'], level: 'info' } }
+});
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
